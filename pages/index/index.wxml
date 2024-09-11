@@ -1,0 +1,8 @@
+<!--index.wxml-->
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="container">
+    <view class="userinfo">
+      <button bindtap="bindViewTap">扫描</button>
+    </view>
+  </view>
+</scroll-view>

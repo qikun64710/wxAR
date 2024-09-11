@@ -1,0 +1,33 @@
+<xr-scene ar-system="modes:Marker" bind:ready="handleReady">
+  <xr-assets bind:loaded="handleAssetsLoaded">
+    <xr-asset-load
+      type="video-texture" asset-id="video1" options="loop:true,abortAudio:false"
+      src="https://qkblog-1301961619.cos.ap-shanghai.myqcloud.com/articleCover/video/sd1708755316_2.MP4"
+    />
+    <xr-asset-material asset-id="mat1" effect="simple" uniforms="u_baseColorMap: video-video1" />
+    <xr-asset-load
+      type="video-texture" asset-id="video2" options="loop:true,abortAudio:false"
+      src="https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/xr-frame-team/2dmarker/hikari-v.mp4"
+    />
+    <xr-asset-material asset-id="mat2" effect="simple" uniforms="u_baseColorMap: video-video2" />
+  </xr-assets>
+
+  <xr-node wx:if="{{loaded}}">
+    <xr-ar-tracker
+      mode="Marker" bind:ar-tracker-switch="handleTrackerSwitch"
+      data-custom="video1"
+      src="https://qkblog-1301961619.cos.ap-shanghai.myqcloud.com/articleCover/8e937c02542db388f7afb18926a2baf8.jpg"
+    >
+      <xr-mesh position="0 0 0" scale="1 1 0.6" node-id="mesh-plane1" geometry="plane" material="mat1" />
+    </xr-ar-tracker>
+    <xr-ar-tracker
+      mode="Marker" bind:ar-tracker-switch="handleTrackerSwitch"
+      data-custom="video2"
+      src="https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/xr-frame-team/2dmarker/hikari.jpg"
+    >
+      <xr-mesh position="0 0 0" scale="1 1 1" node-id="mesh-plane2" geometry="plane" material="mat2" />
+    </xr-ar-tracker>
+  </xr-node>
+
+  <xr-camera clear-color="0.4 0.8 0.6 1" background="ar" is-ar-camera />
+</xr-scene>

@@ -1,0 +1,35 @@
+<xr-scene ar-system="modes:Marker" bind:ready="handleReady">
+  <xr-assets bind:loaded="handleAssetsLoaded">
+      <xr-asset-load
+        type="video-texture"
+        wx:for="{{videoList}}"
+        wx:key="assetId"
+        asset-id="hikari"
+        options="loop:true"
+        src="{{item.src}}"
+      />
+      <xr-asset-material
+        asset-id="mat"
+        effect="simple"
+        uniforms="u_baseColorMap: video-hikari"
+      />
+  </xr-assets>
+
+  <xr-node wx:if="{{loaded}}">
+    <block wx:for="{{trackerList}}" wx:key="assetId">
+      <xr-ar-tracker
+        mode="Marker"
+        bind:ar-tracker-switch="handleTrackerSwitch"
+        src="{{item.src}}"
+      >
+        <xr-mesh
+          node-id="mesh-plane"
+          geometry="plane"
+          material="mat"
+        />
+      </xr-ar-tracker>
+    </block>
+  </xr-node>
+
+  <xr-camera clear-color="0.4 0.8 0.6 1" background="ar" is-ar-camera />
+</xr-scene>
