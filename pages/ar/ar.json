@@ -1,6 +1,0 @@
-{
-  "usingComponents": {
-    "ar-video-player": "/components/ar-video-player/ar-video-player"
-  },
-  "disableScroll": true
-}
