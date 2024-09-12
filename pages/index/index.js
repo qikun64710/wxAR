@@ -15,7 +15,7 @@ Page({
   bindViewTap() {
     wx.navigateTo({
       // url: '../ar/ar'
-      url: '../qkar/index'
+      url: '../qkar/index'
     })
   },
   onChooseAvatar(e) {
